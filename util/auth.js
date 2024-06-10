@@ -4,7 +4,7 @@ const authenticate = async (email, password) => {
   const url = AUTH_URL + '/signin';
   const res = await fetch(url, {
     method: 'POST',
-    headers: { 'content-type': 'application/json' },
+    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
       email,
       password,
@@ -12,9 +12,13 @@ const authenticate = async (email, password) => {
   });
 
   const result = await res.json();
-  console.log('로그인 결과 : ', result);
+  console.log('로그인 결과: ', result);
+
+  return result.token;
 };
 
 export function login(email, password) {
   return authenticate(email, password);
 }
+
+// export default authenticate;
